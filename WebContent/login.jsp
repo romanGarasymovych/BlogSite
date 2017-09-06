@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    session="true"
+%>
+<%
+	if(session.getAttribute("user") != null){
+		response.sendRedirect("index.jsp");
+	}
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Login</title>
+		<link href='./bootstrap/css/bootstrap.min.css' rel='stylesheet' />
+		<script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
+	</head>
+	<body>
+		<nav class='navbar navbar-inverse'>
+  			<div class="container-fluid">
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="index.jsp">Blog</a>
+   				</div>
+    			<ul class="nav navbar-nav navbar-right">
+      				<li class="active"><a href="#">Log In</a></li>
+      				<li><a href="registration.jsp">Register</a></li>
+   				</ul>
+  			</div>
+		</nav>
+		<div class='container'>
+			<h1>Login</h1>
+			<p class='text-danger'>${wrong}</p>
+			<form method="post" action="LoginServlet">
+				<div class='form-group'>
+					<label >Username
+						<input type='text' class='form-control'  name='username'>
+					</label>
+				</div>
+				<div class=”form-group”>
+					<label>Password
+						<input type='password' class='form-control' name='pass'>
+					</label>
+				</div>
+
+				<div class=”checkbox”>
+					<label>
+						<input type='checkbox' name='rememberMe' value='true'> Remember Me
+					</label>
+				</div>
+				<a href='registration.jsp'>Register</a>
+				<button type='submit' class='btn btn-primary'>Submit</button>
+			</form>
+		</div>
+	</body>
+</html>
