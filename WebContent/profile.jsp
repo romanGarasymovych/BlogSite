@@ -36,7 +36,7 @@
       				<a class="navbar-brand" href="index.jsp">Blog</a>
    				</div>
     			<ul class="nav navbar-nav navbar-right">
-      				<li><p class="navbar-text">${user.getFirstName()} ${user.getLastName() }</p></li>
+      				<li><button class='btn btn-link navbar-btn'>${user.getFirstName()} ${user.getLastName() }</button></li>
       				<li>
       					<form action="Logout" method="post">
       					<button type='submit' class='btn btn-danger navbar-btn'>Logout</button>
@@ -46,7 +46,7 @@
   			</div>
 		</nav>
 		<div class='container'>
-			
+			<h1>Welcome to your profile, ${user.getFirstName()} ${user.getLastName()}</h1>
 		</div>
 	</body>
 </html>
