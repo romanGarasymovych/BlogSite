@@ -8,22 +8,22 @@ package helperClasses;
 public class Comment {
 	private String id;
 	private String Content;
-	private String Author;
 	private String Date;
+	private String username;
 	
 	public Comment() {
 	}
 	
-	public Comment(String content, String author, String date) {
+	public Comment(String content, String date, String username) {
 		this.Content = content;
-		this.Author = author;
 		this.Date = date;
+		this.username = username;
 	}
-	public Comment(String id, String content, String author, String date) {
+	public Comment(String id, String content, String date, String username) {
 		this.id = id;
 		this.Content = content;
-		this.Author = author;
 		this.Date = date;
+		this.username = username;
 	}
 	public String getId() {
 		return id;
@@ -37,16 +37,18 @@ public class Comment {
 	public void setContent(String content) {
 		Content = content;
 	}
-	public String getAuthor() {
-		return Author;
-	}
-	public void setAuthor(String author) {
-		Author = author;
-	}
 	public String getDate() {
 		return Date;
 	}
 	public void setDate(String date) {
 		Date = date;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

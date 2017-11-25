@@ -32,10 +32,10 @@
 		<nav class='navbar navbar-inverse'>
   			<div class="container-fluid">
     			<div class="navbar-header">
-      				<a class="navbar-brand" href="#">Blog</a>
+      				<a class="navbar-brand" href="index.jsp">Blog</a>
    				</div>
     			<ul class="nav navbar-nav navbar-right">
-      				<li><button class='btn btn-link navbar-btn'>${user.getFirstName()} ${user.getLastName() }</button></li>
+      				<li><button class='btn btn-link navbar-btn' onclick="location.href = 'profile.jsp?username=${user.getUsername()}'">${user.getFirstName()} ${user.getLastName() }</button></li>
       				<li>
       					<form action="Logout" method="post">
       					<button type='submit' class='btn btn-danger navbar-btn'>Logout</button>
@@ -58,7 +58,7 @@
 					<div class="media">
 						<div class='media-left'></div>
 							<div class='media-body'>
-			                	<h4 class="media-heading"><%= post.getAuthor() %><small><i> Posted on <%= post.getDate() %></i></small></h4>
+			                	<h4 class="media-heading"><a href="profile.jsp?username=<%= post.getUsername() %>" ><%= post.getUsername()%></a><small><i> Posted on <%= post.getDate() %></i></small></h4>
 								<p><%= post.getContent() %></p>
 									<%
 									// Populates page with comments attached to posts
@@ -68,7 +68,7 @@
 									<div class='media'>
 										<div class='media-left'></div>
 										<div class='media-body'>
-											<h5 class="media-heading"><%= comment.getAuthor() %><small><i> Posted on <%= comment.getDate() %></i></small></h5>
+											<h5 class="media-heading"><a href="profile.jsp?username=<%= comment.getUsername() %>"><%= comment.getUsername() %></a><small><i> Posted on <%= comment.getDate() %></i></small></h5>
 						                    <p class="comment-content"> <%=comment.getContent()%></p>
 					                    </div>
 									</div>

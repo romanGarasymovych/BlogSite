@@ -8,12 +8,8 @@
 		username="root"
 		password="admin"
 		driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/comp3095"
+		url="jdbc:mysql://localhost:3306/BlogDB"
 		maxTotal="15"
 		maxIdle="3"
-		/>
-		<!-- url="jdbc:mysql://blogdb.cnxon53r10dz.ca-central-1.rds.amazonaws.com:3306/comp3095" -->
-				<!-- url="jdbc:mysql://localhost:3306/comp3095" -->
-				<!-- driverClassName="com.mysql.jdbc.Driver" -->
-		
+		/>	
 </Context>

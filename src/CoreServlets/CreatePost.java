@@ -44,7 +44,7 @@ public class CreatePost extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		
 		String content = request.getParameter("content");
-		String author = user.getFirstName() +" " + user.getLastName();
+		String username = user.getUsername();
 		
 		String invalid = "Can't be empty";
 
@@ -52,7 +52,7 @@ public class CreatePost extends HttpServlet {
 		Date date = new Date();
 		String postDate = dateFormat.format(date);
 		
-		Post newPost = new Post(content, author, postDate);
+		Post newPost = new Post(content, postDate, username);
 		if(content == null || content == ""){
 			session.setAttribute("invalid", invalid);
 			response.sendRedirect("post.jsp");

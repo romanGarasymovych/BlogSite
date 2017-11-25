@@ -32,7 +32,7 @@
       				<a class="navbar-brand" href="index.jsp">Blog</a>
    				</div>
     			<ul class="nav navbar-nav navbar-right">
-      				<li><button class='btn btn-link navbar-btn'>${user.getFirstName()} ${user.getLastName() }</button></li>
+      				<li><button class='btn btn-link navbar-btn' onclick="location.href = 'profile.jsp?username=${user.getUsername()}'">${user.getFirstName()} ${user.getLastName() }</button></li>
       				<li>
       					<form action="Logout" method="post">
       					<button type='submit' class='btn btn-danger navbar-btn'>Logout</button>
@@ -45,7 +45,7 @@
 			<h1>Blog - Add a Comment</h1>
 			<div class='media'>
 				<div class='media-body'>
-					<h4 class="media-heading"><%= post.getAuthor() %><small><i> Posted on <%= post.getDate() %></i></small></h4>
+					<h4 class="media-heading"><%= post.getUsername() %><small><i> Posted on <%= post.getDate() %></i></small></h4>
 					<p><%= post.getContent() %></p>
 				</div>
 			</div>
