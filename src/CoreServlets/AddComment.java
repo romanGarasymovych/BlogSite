@@ -43,8 +43,8 @@ public class AddComment extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		
 		String content = request.getParameter("content");
-		String author = user.getFirstName() + " " + user.getLastName();
 		String postID = request.getParameter("postID");
+		String username = user.getUsername();
 		
 		String invalid = "Can't be Empty";
 
@@ -52,7 +52,7 @@ public class AddComment extends HttpServlet {
 		Date date = new Date();
 		String commentDate = dateFormat.format(date);
 		
-		Comment comment = new Comment(postID, content, author, commentDate);
+		Comment comment = new Comment(content, commentDate, username);
 		if(content == null || content == ""){
 			session.setAttribute("invalid", invalid);
 			response.sendRedirect("comment.jsp?id="+postID);

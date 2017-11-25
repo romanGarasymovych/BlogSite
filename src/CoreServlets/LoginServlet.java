@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +35,8 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String username = "";
+		
 		HttpSession session = request.getSession();
 		User user  = (User) session.getAttribute("user");
 		String requestedURL = (String) session.getAttribute("requestedURL");
@@ -41,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 
 		boolean remember = "true".equals(request.getParameter("rememberMe"));
 		if(user == null){
-			String username = request.getParameter("username");
+			username = request.getParameter("username");
 			String pass = request.getParameter("pass");
 			
 			request.setAttribute("username", username);
@@ -60,7 +63,10 @@ public class LoginServlet extends HttpServlet {
 		// This is called if user logged in successfully
 		else if(requestedURL == "index.jsp"){
 			if(remember){
-				// Cookie stuff
+				Cookie c = new Cookie("username", username.toString());
+				c.setMaxAge(24*60*60);
+				response.addCookie(c);
+				System.out.println("Adding cookie for " + user.getUsername());
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);

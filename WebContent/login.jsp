@@ -6,6 +6,16 @@
 	if(session.getAttribute("user") != null){
 		response.sendRedirect("index.jsp");
 	}
+	
+	Cookie[] cookies = request.getCookies();
+	boolean foundCookie = false;
+	for (int i = 0; i < cookies.length; i++){
+		Cookie c = cookies[i];
+		if (c.getName().equals("username")){
+			session.setAttribute("username", c.getValue());
+			foundCookie = true;
+		}
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,7 +43,7 @@
 			<form method="post" action="LoginServlet">
 				<div class='form-group'>
 					<label >Username
-						<input type='text' class='form-control'  name='username'>
+						<input type='text' class='form-control'  name='username' value='${cookie.username.getValue()}'>
 					</label>
 				</div>
 				<div class=”form-group”>
@@ -43,8 +53,9 @@
 				</div>
 
 				<div class=”checkbox”>
+				
 					<label>
-						<input type='checkbox' name='rememberMe' value='true'> Remember Me
+						<input type='checkbox' name='rememberMe' value='true' > Remember Me
 					</label>
 				</div>
 				<a href='registration.jsp'>Register</a>

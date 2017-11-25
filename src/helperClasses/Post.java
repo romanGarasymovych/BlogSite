@@ -6,33 +6,34 @@
 package helperClasses;
 
 public class Post {
-	private int IDpost;
+	private String IDpost;
 	private String Content;
-	private String Author;
+	private String username;
 	private String Date;
+
 	
 	public Post() {
 		super();
 	}
 	
-	public Post(String content, String author, String date) {
+	public Post(String content, String date, String username) {
 		this.Content = content;
-		this.Author = author;
 		this.Date = date;
+		this.username = username;
 	}
 	
-	public Post(int ID, String content, String author, String date) {
+	public Post(String ID, String content, String date, String username) {
 		this.IDpost = ID;
 		this.Content = content;
-		this.Author = author;
 		this.Date = date;
+		this.username = username;
 	}
 
-	public int getIDpost() {
+	public String getIDpost(){
 		return IDpost;
 	}
 
-	public void setIDpost(int iDpost) {
+	public void setIDpost(String iDpost) {
 		IDpost = iDpost;
 	}
 
@@ -42,16 +43,18 @@ public class Post {
 	public void setContent(String content) {
 		Content = content;
 	}
-	public String getAuthor() {
-		return Author;
-	}
-	public void setAuthor(String author) {
-		Author = author;
-	}
 	public String getDate() {
 		return Date;
 	}
 	public void setDate(String date) {
 		Date = date;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

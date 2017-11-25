@@ -6,6 +6,13 @@
 package helperClasses;
 
 public class User {
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phone=" + phone + ", year=" + year + ", major=" + major + ", username=" + username + ", password="
+				+ password + "]";
+	}
+
 	private int idUser;
 	private String firstName;
 	private String lastName;
@@ -115,7 +122,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String ToString(){
-		return this.username + " " + this.email;
-	}
+	
 }

@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 				da.InsertUser(user);
 				System.out.println("User created");
 				request.setAttribute("success", success);
-				request.setAttribute("user", user);
+				session.setAttribute("user", user);
 				RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
 		        rd.include(request,response); 
 			} catch (SQLException e) {

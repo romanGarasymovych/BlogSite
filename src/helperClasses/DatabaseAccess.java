@@ -14,9 +14,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class DatabaseAccess {
-// TODO: Make changes to the theme
-// TODO: Deploy website to AWS
-// TODO: Format Registration page a little
 	  private static Connection connect = null;
 	  
 	  public static Connection connectDataBase() throws Exception {
@@ -80,7 +77,7 @@ public class DatabaseAccess {
 		  		ps = con.prepareStatement("SELECT * FROM posts ORDER BY post_date DESC");
 		  		rs = ps.executeQuery();
 		  		while(rs.next()){
-		  			post = new Post(rs.getInt(1), rs.getString(2), rs.getString(3), FormatDate.format(rs.getString(4)));
+		  			post = new Post(rs.getString(1), rs.getString(2), FormatDate.format(rs.getString(3)), rs.getString(4));
 		  			posts.add(post);
 		  		}
 		  		return posts;
@@ -110,7 +107,7 @@ public class DatabaseAccess {
 			  rs = ps.executeQuery();
 			  
 			  if(rs.next()){
-				  post = new Post(rs.getInt(1), rs.getString(2), rs.getString(3), FormatDate.format(rs.getString(4)));
+				  post = new Post(rs.getString(1), rs.getString(2),FormatDate.format(rs.getString(3)), rs.getString(4));
 			  }
 		  }catch(Exception e){
 				e.printStackTrace();
@@ -125,21 +122,20 @@ public class DatabaseAccess {
 		  
 	  }
 	  
-	  public List<Comment> GetComments(int id) throws SQLException{
+	  public List<Comment> GetComments(String id) throws SQLException{
 		  Connection con = null;
 		  PreparedStatement ps = null;
 		  ResultSet rs = null;
 		  Comment comment;
 	  	  List<Comment> comments = new ArrayList<Comment>();
-	  	  String post_id =  String.valueOf(id);
 		  try{
 			  con = DatabaseAccess.connectDataBase();
 			  ps = con.prepareStatement("SELECT * FROM comments INNER JOIN "
 			  		+ "posts ON comments.post_id = posts.id "
-			  		+ "WHERE posts.id ="+post_id);
+			  		+ "WHERE posts.id = '"+id + "'");
 			  rs =  ps.executeQuery();
 			  while(rs.next()){
-				  comment = new Comment(rs.getString(2), rs.getString(3), FormatDate.format(rs.getString(4)));
+				  comment = new Comment(rs.getString(2), FormatDate.format(rs.getString(3)), rs.getString(4));
 				  comments.add(comment);
 			  }
 			  return comments;
@@ -158,10 +154,10 @@ public class DatabaseAccess {
 		  PreparedStatement ps = null;
 		  try{
 		  		con = DatabaseAccess.connectDataBase();
-		  		ps = con.prepareStatement("INSERT INTO posts (content, author, post_date) VALUES(?,?,?)");
+		  		ps = con.prepareStatement("INSERT INTO posts (content, post_date, username) VALUES(?,?,?)");
 		  		ps.setString(1, post.getContent());
-		  		ps.setString(2, post.getAuthor());
-		  		ps.setString(3, post.getDate());
+		  		ps.setString(2, post.getDate());
+		  		ps.setString(3, post.getUsername());
 		  		
 		  		return ps.execute();
 		  		
@@ -186,11 +182,11 @@ public class DatabaseAccess {
 		  PreparedStatement ps = null;
 		  try{
 		  		con = DatabaseAccess.connectDataBase();
-		  		ps = con.prepareStatement("INSERT INTO comments (content, author, post_date, post_id) VALUES(?,?,?,?)");
+		  		ps = con.prepareStatement("INSERT INTO comments (content, post_date, post_id, username) VALUES(?,?,?,?)");
 		  		ps.setString(1, comment.getContent());
-		  		ps.setString(2, comment.getAuthor());
-		  		ps.setString(3, comment.getDate());
-		  		ps.setString(4, post_id);
+		  		ps.setString(2, comment.getDate());
+		  		ps.setString(3, post_id);
+		  		ps.setString(4, comment.getUsername());
 		  		
 		  		return ps.execute();
 		  }catch(Exception e){
@@ -266,5 +262,38 @@ public class DatabaseAccess {
 				}
 			}
 		  return false;
+	  }
+	  public User GetUserByUsername(String username) throws SQLException {
+		  Connection con = null;
+		  User user = null;
+		  PreparedStatement ps = null;
+		  ResultSet rs = null;
+			try{
+				con = DatabaseAccess.connectDataBase();
+				
+				ps = con.prepareStatement
+						("SELECT * FROM users WHERE username=?");
+				ps.setString(1, username);
+				rs = ps.executeQuery();
+				
+				if(rs.next()){
+
+					user = new User(rs.getString("firstName"), rs.getString("lastName"), 
+							rs.getString("email"), rs.getString("phone"), 
+							rs.getString("year"), rs.getString("major"), rs.getString("username"));
+				}
+				else{
+					user = new User("invalid", "invalid");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				if(con !=null){
+					con.close();
+					ps.close();
+					rs.close();
+				}
+			}
+			return user;
 	  }
 }
