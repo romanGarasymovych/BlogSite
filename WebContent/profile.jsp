@@ -110,8 +110,7 @@
 						<form class="form" method="post" action="UpdateProfile">
 							<div class="form-group">
 								<label for="firstName">First Name</label>
-								<input type="text" name="
-" placeholder="${user.getFirstName()}" id="firstName" class="form-control"/>
+								<input type="text" name="firstName" placeholder="${user.getFirstName()}" id="firstName" class="form-control"/>
 							</div>
 							<div class="form-group">
 								<label for="lastName">Last Name</label>
