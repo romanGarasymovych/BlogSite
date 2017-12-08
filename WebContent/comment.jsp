@@ -17,15 +17,16 @@
 	DatabaseAccess da = new DatabaseAccess();
 	Post post = da.GetPost(request.getParameter("id"));
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>New Comment</title>
+		<title>Blog - New Comment</title>
+		<link href='./stylesheets/style.css' rel='stylesheet'/>
 		<link href='./bootstrap/css/bootstrap.min.css' rel='stylesheet' />
 		<script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
 	</head>
-<body>
+<body class='body'>
 	<nav class='navbar navbar-inverse'>
   			<div class="container-fluid">
     			<div class="navbar-header">
@@ -41,7 +42,7 @@
    				</ul>
   			</div>
 		</nav>
-		<div class='container'>
+		<div class='container cont'>
 			<h1>Blog - Add a Comment</h1>
 			<div class='media'>
 				<div class='media-body'>

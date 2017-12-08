@@ -1,27 +1,15 @@
-<%@page import="helperClasses.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%
-	if(session == null){
-		response.sendRedirect("login.jsp");
-	}
-	User currentUser;
-	currentUser = (User) session.getAttribute("user");
-	
-	if(currentUser == null){
-		response.sendRedirect("login.jsp");
-	}
-%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Blog - New Post</title>
+		<title>Blog - ${user.getUsername()} - Change Password</title>
 		<link href='./stylesheets/style.css' rel='stylesheet'/>
 		<link href='./bootstrap/css/bootstrap.min.css' rel='stylesheet' />
 		<script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
 	</head>
-	<body class='body'>
+	<body class="body">
 		<nav class='navbar navbar-inverse'>
   			<div class="container-fluid">
     			<div class="navbar-header">
@@ -37,18 +25,8 @@
    				</ul>
   			</div>
 		</nav>
-		<div class='container cont'>		
-			<h1>Blog - New Post</h1>
-			<p class='text-danger'>${invalid }</p>
-			<form method="post" action="CreatePost">
-				<textarea name="content" rows="10" cols="100"></textarea>
-					<br/>
-				<div class="btn-group">
-					<button class='btn btn-primary' type="submit">Submit</button>
-					<button class='btn btn-default' form="back" type="submit">Back</button>
-				</div>
-	    	</form>
-			<form id="back" action="index.jsp"></form>
-	   	</div>
+		<div class='container cont'>
+			<h2>Change Email</h2>
+		</div>
 	</body>
-</html>
+</html>>

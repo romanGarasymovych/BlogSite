@@ -232,6 +232,34 @@ public class DatabaseAccess {
 	  }
 		  return false;
 	  }
+	  
+	  public boolean UpdateUser(User user) throws SQLException{
+		  Connection con = null;
+		  PreparedStatement ps = null;
+		  try{
+			  con = DatabaseAccess.connectDataBase();
+			  ps = con.prepareStatement("UPDATE users SET firstname = ?, lastname = ?, "
+			  		+ "phone = ?, year = ?, major = ? WHERE username = ?");
+			  ps.setString(1,  user.getFirstName());
+			  ps.setString(2,  user.getLastName());
+			  ps.setString(3,  user.getPhone());
+			  ps.setString(4, user.getYear());
+			  ps.setString(5,  user.getMajor());
+			  ps.setString(6,  user.getUsername());
+			  
+			  ps.execute();
+			  return true;
+		  } catch(Exception e){
+			  e.printStackTrace();
+		  } finally{
+			  if(con != null){
+				  con.close();
+				  ps.close();
+			  }
+		  }
+		  return false;
+	  }
+	  
 	  public boolean CheckUsername(String uName){
 		  Connection con = null;
 		  PreparedStatement ps = null;
@@ -295,5 +323,44 @@ public class DatabaseAccess {
 				}
 			}
 			return user;
+	  }
+	  
+	  public boolean checkPassword(User user, String pass) {
+		  Connection con = null;
+		  PreparedStatement ps = null;
+		  ResultSet rs = null;
+		  try{
+			  con = DatabaseAccess.connectDataBase();
+			  ps = con.prepareStatement("Select password FROM users WHERE username=?");
+			  ps.setString(1, user.getUsername());
+			  
+			  rs = ps.executeQuery();
+			  
+			  if(rs.next()){
+				  if(rs.getString(1).equals(pass)){
+					  return true;
+				  } 
+				  return false;
+			  }
+			  return false;
+		  } catch (Exception e){ e.printStackTrace(); }
+		  
+		  return false;
+	  }
+	  
+	  public boolean changePassword(User user, String pass){
+		  Connection con = null;
+		  PreparedStatement ps = null;
+		  try{
+			  con = DatabaseAccess.connectDataBase();
+			  ps = con.prepareStatement("UPDATE users SET password=? WHERE username=?");
+			  ps.setString(1, pass);
+			  ps.setString(2, user.getUsername());
+			  
+			  ps.execute();
+			  return true;
+		  } catch (Exception e) {e.printStackTrace();}
+		  
+		  return false;
 	  }
 }
