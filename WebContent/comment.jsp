@@ -1,6 +1,6 @@
-<%@page import="helperClasses.User"%>
-<%@page import="helperClasses.Post"%>
-<%@page import="helperClasses.DatabaseAccess"%>
+<%@page import="classes.User"%>
+<%@page import="classes.Post"%>
+<%@page import="util.DatabaseAccess"%>
 <%@page import="java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

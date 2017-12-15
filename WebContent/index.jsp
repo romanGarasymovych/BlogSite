@@ -1,7 +1,7 @@
-<%@page import="helperClasses.User"%>
-<%@page import="helperClasses.Post"%>
-<%@page import="helperClasses.Comment"%>
-<%@page import="helperClasses.DatabaseAccess"%>
+<%@page import="classes.User"%>
+<%@page import="classes.Post"%>
+<%@page import="classes.Comment"%>
+<%@page import="util.DatabaseAccess"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -27,6 +27,7 @@
 		<title>Blog - Welcome</title>
 		<link href='./stylesheets/style.css' rel='stylesheet'/>
 		<link href='./bootstrap/css/bootstrap.min.css' rel='stylesheet' />
+		<link href="./plugins/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
 	</head>
 	<body class='body'>
@@ -45,7 +46,7 @@
    				</ul>
   			</div>
 		</nav>
-		<div class='container cont'>
+		<div class='container'>
 			<h1>Blog</h1>
 			<a href="post.jsp">Write a Post</a>
 			<%
@@ -59,8 +60,8 @@
 					<div class="media">
 						<div class='media-left'></div>
 							<div class='media-body'>
-			                	<h4 class="media-heading"><a href="profile.jsp?username=<%= post.getUsername() %>" ><%= post.getUsername()%></a><small><i> Posted on <%= post.getDate() %></i></small></h4>
-								<p><%= post.getContent() %></p>
+			                	<h4 class="media-heading"><a href="profile.jsp?username=<%= post.getUsername() %>" ><%= post.getUsername()%></a><small class='pull-right'><i> Posted on <%= post.getDate() %></i></small></h4>
+								<div class='fr-view'><%= post.getContent() %></div>
 									<%
 									// Populates page with comments attached to posts
 									for (Iterator<Comment> c = comments.iterator(); c.hasNext();) {

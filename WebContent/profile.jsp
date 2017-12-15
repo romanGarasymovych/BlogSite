@@ -1,7 +1,7 @@
-<%@page import="helperClasses.User"%>
-<%@page import="helperClasses.Post"%>
-<%@page import="helperClasses.Comment"%>
-<%@page import="helperClasses.DatabaseAccess"%>
+<%@page import="classes.User"%>
+<%@page import="classes.Post"%>
+<%@page import="classes.Comment"%>
+<%@page import="util.DatabaseAccess"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Objects" %>

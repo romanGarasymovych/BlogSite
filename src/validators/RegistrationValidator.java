@@ -6,8 +6,8 @@
  */
 package validators;
 
-import helperClasses.DatabaseAccess;
-import helperClasses.Errors;
+import classes.Errors;
+import util.DatabaseAccess;
 
 public class RegistrationValidator {
 	
