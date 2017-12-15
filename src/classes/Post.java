@@ -6,48 +6,54 @@
 package classes;
 
 public class Post {
-	private String IDpost;
-	private String Content;
+	private String postId;
+	private String title;
+	private String content;
 	private String username;
-	private String Date;
+	private String date;
+	private int commentCount;
 
 	
 	public Post() {
 		super();
 	}
 	
-	public Post(String content, String date, String username) {
-		this.Content = content;
-		this.Date = date;
+	public Post(String title, String content, String date, String username, int commentCount) {
+		this.title = title;
+		this.content = content;
+		this.date = date;
 		this.username = username;
+		this.commentCount = commentCount;
 	}
 	
-	public Post(String ID, String content, String date, String username) {
-		this.IDpost = ID;
-		this.Content = content;
-		this.Date = date;
+	public Post(String ID, String title, String content, String date, String username, int commentCount) {
+		this.postId = ID;
+		this.title = title;
+		this.content = content;
+		this.date = date;
 		this.username = username;
+		this.commentCount = commentCount;
 	}
 
 	public String getIDpost(){
-		return IDpost;
+		return postId;
 	}
 
 	public void setIDpost(String iDpost) {
-		IDpost = iDpost;
+		postId = iDpost;
 	}
 
 	public String getContent() {
-		return Content;
+		return content;
 	}
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
 	}
 	public String getDate() {
-		return Date;
+		return date;
 	}
 	public void setDate(String date) {
-		Date = date;
+		this.date = date;
 	}
 
 	public String getUsername() {
@@ -56,5 +62,21 @@ public class Post {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public int getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

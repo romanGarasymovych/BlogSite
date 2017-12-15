@@ -1,6 +1,5 @@
 <%@page import="classes.User"%>
 <%@page import="classes.Post"%>
-<%@page import="classes.Comment"%>
 <%@page import="util.DatabaseAccess"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -48,34 +47,23 @@
 		</nav>
 		<div class='container'>
 			<h1>Blog</h1>
-			<a href="post.jsp">Write a Post</a>
+			<a href="newPost.jsp">Write a Post</a>
 			<%
 				// Populates page with posts
 				for (Iterator<Post> i = posts.iterator(); i.hasNext();) {
                 	Post post = i.next();
-                	List<Comment> comments = da.GetComments(post.getIDpost());
 			%>
 			<div class='panel panel-default'>
 				<div class='panel-body'>
 					<div class="media">
 						<div class='media-left'></div>
 							<div class='media-body'>
-			                	<h4 class="media-heading"><a href="profile.jsp?username=<%= post.getUsername() %>" ><%= post.getUsername()%></a><small class='pull-right'><i> Posted on <%= post.getDate() %></i></small></h4>
-								<div class='fr-view'><%= post.getContent() %></div>
-									<%
-									// Populates page with comments attached to posts
-									for (Iterator<Comment> c = comments.iterator(); c.hasNext();) {
-					                	Comment comment = c.next();
-									%>
-									<div class='media'>
-										<div class='media-left'></div>
-										<div class='media-body'>
-											<h5 class="media-heading"><a href="profile.jsp?username=<%= comment.getUsername() %>"><%= comment.getUsername() %></a><small><i> Posted on <%= comment.getDate() %></i></small></h5>
-						                    <p class="comment-content"> <%=comment.getContent()%></p>
-					                    </div>
-									</div>
-								<%}%>
-							<a href="comment.jsp?id=<%= post.getIDpost() %>">Add a Comment</a>
+			                	<h4 class="media-heading">
+			                		<a href="profile.jsp?username=<%= post.getUsername() %>" ><%= post.getUsername()%></a>
+			                		<small class='pull-right'><i> Posted on <%= post.getDate() %></i></small>
+			                	</h4>
+			                	<h3><a href='post.jsp?postId=<%= post.getIDpost() %>'><%= post.getTitle() %></a></h3>
+							<a href="comment.jsp?id=<%= post.getIDpost() %>"><span id='count'><%=post.getCommentCount() %></span>&nbsp;comment</a>
 						</div>
 					</div>
 				</div>
