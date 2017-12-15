@@ -66,6 +66,7 @@
 		<title>Blog - ${user.getUsername()}'s profile</title>
 		<link href='./stylesheets/style.css' rel='stylesheet'/>
 		<link href='./bootstrap/css/bootstrap.min.css' rel='stylesheet' />
+		<link href='./favicon.png' rel='shortcut icon'/>
 		<script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
 	</head>
 	<body class="body">
@@ -106,12 +107,11 @@
 			
 				<h2>Update Profile</h2>
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-7">
 						<form class="form" method="post" action="UpdateProfile">
 							<div class="form-group">
 								<label for="firstName">First Name</label>
-								<input type="text" name="
-" placeholder="${user.getFirstName()}" id="firstName" class="form-control"/>
+								<input type="text" name="firstName" placeholder="${user.getFirstName()}" id="firstName" class="form-control"/>
 							</div>
 							<div class="form-group">
 								<label for="lastName">Last Name</label>
@@ -141,16 +141,33 @@
 							<button class="btn btn-success" type="submit">Update</button>
 						</form>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
+						<h3>Profile Details</h3>
+						<hr />
+						<h4>Name: <span class='pull-right'>${user.getFirstName() }&nbsp;${user.getLastName() }</span></h4>
+						<h4>Email: <span class='pull-right'>${user.getEmail()}</span></h4>
+						<h4>Phone Number: <span class='pull-right'>${user.getPhone()}</span></h4>
+						<h4>Major: <span class='pull-right'>${user.getMajor()}</span></h4>
+						<h4>Year: <span class='pull-right'>${user.getYear()}</span></h4>
+						<hr />
 						<h3>Security Settings</h3>
-						<button class="btn btn-primary" onClick="location.href = 'changePassword.jsp'">Change Password</button>
 						<button class="btn btn-primary" onClick="location.href = 'changeEmail.jsp'">Change Email</button>
+						<button class="btn btn-primary" onClick="location.href = 'changePassword.jsp'">Change Password</button>
 					</div>
 				</div>
 				
 				
 		<% } else {%>
 			<h1> Welcome to <%= userProfile.getUsername() %>'s profile</h1>
+			<div class='row'>
+				<div class="col-sm-5">
+					<h4>Name: <span class='pull-right'><%= userProfile.getFirstName() %>&nbsp;<%= userProfile.getLastName() %></span></h4>
+					<h4>Email: <span class='pull-right'><%= userProfile.getEmail() %></span></h4>
+					<h4>Phone Number: <span class='pull-right'><%= userProfile.getPhone() %></span></h4>
+					<h4>Major: <span class='pull-right'><%= userProfile.getMajor() %></span></h4>
+					<h4>Year: <span class='pull-right'><%= userProfile.getYear() %></span></h4>
+				</div>
+			</div>
 		<% } %>
 		</div>
 	</body>

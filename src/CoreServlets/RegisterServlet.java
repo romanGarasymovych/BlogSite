@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import helperClasses.DatabaseAccess;
 import helperClasses.Errors;
-import helperClasses.RegistrationValidator;
+import validators.RegistrationValidator;
 import helperClasses.User;
 
 

@@ -363,4 +363,20 @@ public class DatabaseAccess {
 		  
 		  return false;
 	  }
+	  
+	  public boolean changeEmail(User user, String email){
+		  Connection con = null;
+		  PreparedStatement ps = null;
+		  try{
+			  con = DatabaseAccess.connectDataBase();
+			  ps = con.prepareStatement("UPDATE users SET email=? WHERE username=?");
+			  ps.setString(1, email);
+			  ps.setString(2, user.getUsername());
+			  
+			  ps.execute();
+			  return true;
+		  } catch (Exception e) {e.printStackTrace();}
+		  
+		  return false;
+	  }
 }

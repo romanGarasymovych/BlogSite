@@ -4,7 +4,10 @@
 
  * Description: Validates and adds the errors to Errors object
  */
-package helperClasses;
+package validators;
+
+import helperClasses.DatabaseAccess;
+import helperClasses.Errors;
 
 public class RegistrationValidator {
 	

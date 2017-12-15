@@ -78,7 +78,7 @@
 				</div>
 				<div class='form-group'>
 					<label for='conPassword'>Confirm new password:</label>
-					<input class='form-control' type='password' id='conPassword' name='conPass' placeholder='Conform Password' />
+					<input class='form-control' type='password' id='conPassword' name='conPass' placeholder='Confirm Password' />
 				</div>
 				<button class='btn btn-primary' type="submit">Submit</button>
 				<button class='btn btn-primary pull-right' onclick="location.href = 'profile.jsp?username=${user.getUsername()}'" type="button">Back</button>
