@@ -136,7 +136,7 @@ public class DatabaseAccess {
 			  con = DatabaseAccess.connectDataBase();
 			  ps = con.prepareStatement("SELECT * FROM comments INNER JOIN "
 			  		+ "posts ON comments.post_id = posts.id "
-			  		+ "WHERE posts.id = '"+id + "'");
+			  		+ "WHERE posts.id = '"+id + "' ORDER BY comments.post_date ASC");
 			  rs =  ps.executeQuery();
 			  while(rs.next()){
 				  comment = new Comment(rs.getString(2), FormatDate.format(rs.getString(3)), rs.getString(4));
