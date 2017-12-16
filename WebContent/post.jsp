@@ -78,6 +78,9 @@
 					<div class='panel panel-default'>
 						<div class='panel-heading'>
 							<h3><%= post.getTitle() %><small><span class='pull-right'><%= post.getDate() %></span></small></h3>
+							<%if(currentUser.getUsername().equals(post.getUsername())){  %>
+							<a class='pull-right'>Edit</a>
+							<%} %>
 						</div>
 						<div class='panel-body'>
 							<div class='fr-view'><%= post.getContent() %></div>
@@ -144,7 +147,6 @@
 				<div class='col-sm-1'>
 				123
 				</div>
-			</div>
 			</div>
 		</div>
 	</body>

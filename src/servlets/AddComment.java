@@ -61,7 +61,7 @@ public class AddComment extends HttpServlet {
 			if(da.InsertComment(comment, postID)){
 					response.sendRedirect("post.jsp?postId=" + postID);
 				}
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("post.jsp?postId=" + postID);
 
 		}
 	}
