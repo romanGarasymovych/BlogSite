@@ -54,7 +54,6 @@
 		<div class='row'>
 			<div class='col-sm-1'>ads</div>
 			<div class='col-sm-10'>
-				<h1>Blog</h1>
 				<a href="newPost.jsp">Write a Post</a>
 				<%
 					// Populates page with posts
@@ -64,19 +63,23 @@
 				<div class='panel panel-default'>
 					<div class='panel-body'>
 						<div class="media">
-							<div class='media-left'></div>
 							<div class='media-body'>
-								<h4 class="media-heading">
-									<a href="profile.jsp?username=<%=post.getUsername()%>"><%=post.getUsername()%></a>
-									<small class='pull-right'><i> Posted on <%=post.getDate()%></i></small>
-								</h4>
 								<h3>
 									<a class='title-link'
 										href='post.jsp?postId=<%=post.getIDpost()%>'><%=post.getTitle()%></a>
 								</h3>
-								<a href="post.jsp?postId=<%=post.getIDpost()%>"><span
-									id='count'><%=post.getCommentCount()%></span>&nbsp;comment</a>
 							</div>
+							<h4 class="media-heading">
+								<span>
+									<small>
+										<a href="profile.jsp?username=<%=post.getUsername()%>"><%=post.getUsername()%></a>
+										<a href="post.jsp?postId=<%=post.getIDpost()%>">
+											<span id='count'><%=post.getCommentCount()%></span>&nbsp;comment
+										</a>
+										<span class='pull-right'><i> Posted on <%=post.getDate()%></i></span>
+									</small>
+								</span>
+							</h4>
 						</div>
 					</div>
 				</div>
