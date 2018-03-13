@@ -85,7 +85,6 @@
 	</nav>
 	<div class='container-fluid'>
 		<div class='row'>
-			<div class='col-sm-1'>213</div>
 			<div class='col-sm-10'>
 				<%
 					if (sameUser) {
@@ -222,7 +221,6 @@
 					}
 				%>
 			</div>
-			<div class='col-sm-1'>123</div>
 		</div>
 	</div>
 </body>

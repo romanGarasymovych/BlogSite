@@ -51,7 +51,6 @@
 	</nav>
 	<div class='container-fluid'>
 		<div class='row'>
-			<div class='col-sm-1'>123</div>
 			<div class='col-sm-10'>
 				<h2>Change Email</h2>
 
@@ -91,7 +90,6 @@
 						type="button">Back</button>
 				</form>
 			</div>
-			<div class='col-sm-1'>123</div>
 		</div>
 	</div>
 </body>

@@ -71,9 +71,6 @@
 		</nav>
 		<div class='container-fluid'>
 			<div class='row'>
-				<div class='col-sm-1'>
-				123
-				</div>
 				<div class='col-sm-10'>
 					<div class='panel panel-default'>
 						<div class='panel-heading'>
@@ -89,6 +86,8 @@
                 <div class='row'>
 					<div class='col-sm-12'>
 						<form method="post" action="AddComment">
+							<p class='text-danger'>${invalid }</p>
+							<% session.removeAttribute("invalid"); %>
 							<textarea id='addComment' name="content" rows="5" cols="50"></textarea>
 							<br />
 							<input type="hidden" name="postID" value="<%=post.getIDpost() %>"/>	  
@@ -143,9 +142,6 @@
                             </div>
                         </div>
                     </div>
-				</div>
-				<div class='col-sm-1'>
-				123
 				</div>
 			</div>
 		</div>

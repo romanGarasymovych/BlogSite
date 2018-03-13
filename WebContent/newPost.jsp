@@ -58,7 +58,6 @@
 	</nav>
 	<div class='container-fluid'>
 		<div class='row'>
-			<div class='col-sm-1'>123</div>
 			<div class='col-sm-10'>
 				<h1>Blog - New Post</h1>
 				<p class='text-danger'>${invalid }</p>
@@ -102,7 +101,6 @@
 					});
 				</script>
 			</div>
-			<div class='col-sm-1'>123</div>
 		</div>
 	</div>
 </body>
