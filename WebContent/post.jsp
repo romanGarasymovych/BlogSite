@@ -143,6 +143,12 @@
                         </div>
                     </div>
 				</div>
+<<<<<<< HEAD
+=======
+				<div class='col-sm-1'>
+				123
+				</div>
+>>>>>>> branch 'rework-post' of https://github.com/romanGarasymovych/BlogSite.git
 			</div>
 		</div>
 	</body>
