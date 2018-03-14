@@ -44,13 +44,8 @@
 		<link href="./plugins/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
 		
-		<!-- Include external CSS. -->
-    	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
-	 
-	    <!-- Include Editor style. -->
-	    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-	    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+		<!-- CKEditor -->
+		<script type="text/javascript" src="./plugins/ckeditor/ckeditor.js"/></script>
 		
 	</head>
 	<body>
@@ -71,6 +66,7 @@
 		</nav>
 		<div class='container-fluid'>
 			<div class='row'>
+				<div class='col-sm-1'></div>
 				<div class='col-sm-10'>
 					<div class='panel panel-default'>
 						<div class='panel-heading'>
@@ -98,25 +94,10 @@
 		    		</div>
 				</div>
 				<hr/>
-				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-			    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-			 
-			    <!-- Include Editor JS files. -->
-			    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/froala_editor.pkgd.min.js"></script>
-			 
+				
 			    <!-- Initialize the editor. -->
 			    <script> 
-				    $(function() { 
-				    	$('#addComment').froalaEditor({
-					        // Set the image upload URL.
-					        height: 100,
-					        imageUploadURL: '/upload_image',
-					        imageUploadParams: {
-					          id: 'my_editor'
-					        }
-					   	}) 
-				   	}); 
+				    CKEDITOR.replace('addComment');
 			    </script>
                     <div class='row'>
                         <div class='col-sm-12'>
@@ -143,12 +124,9 @@
                         </div>
                     </div>
 				</div>
-<<<<<<< HEAD
-=======
+
 				<div class='col-sm-1'>
-				123
 				</div>
->>>>>>> branch 'rework-post' of https://github.com/romanGarasymovych/BlogSite.git
 			</div>
 		</div>
 	</body>
