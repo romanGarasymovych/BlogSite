@@ -55,13 +55,13 @@ public class AddComment extends HttpServlet {
 		Comment comment = new Comment(content, commentDate, username);
 		if(content == null || content == ""){
 			session.setAttribute("invalid", invalid);
-			response.sendRedirect("comment.jsp?id="+postID);
+			response.sendRedirect("post.jsp?postId="+postID);
 		}
 		else{
 			if(da.InsertComment(comment, postID)){
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("post.jsp?postId=" + postID);
 				}
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("post.jsp?postId=" + postID);
 
 		}
 	}

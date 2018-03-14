@@ -45,6 +45,7 @@ public class CreatePost extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
+		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String username = user.getUsername();
 		
@@ -54,7 +55,7 @@ public class CreatePost extends HttpServlet {
 		Date date = new Date();
 		String postDate = dateFormat.format(date);
 		
-		Post newPost = new Post(content, postDate, username);
+		Post newPost = new Post(title, content, postDate, username, 0);
 		if(content == null || content == ""){
 			session.setAttribute("invalid", invalid);
 			response.sendRedirect("post.jsp");

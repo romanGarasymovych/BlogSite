@@ -81,7 +81,7 @@ public class DatabaseAccess {
 		  		ps = con.prepareStatement("SELECT * FROM posts ORDER BY post_date DESC");
 		  		rs = ps.executeQuery();
 		  		while(rs.next()){
-		  			post = new Post(rs.getString(1), rs.getString(2), FormatDate.format(rs.getString(3)), rs.getString(4));
+		  			post = new Post(rs.getString(1), rs.getString(2), rs.getString(3), FormatDate.format(rs.getString(4)),  rs.getString(5), rs.getInt(6));
 		  			posts.add(post);
 		  		}
 		  		return posts;
@@ -111,7 +111,7 @@ public class DatabaseAccess {
 			  rs = ps.executeQuery();
 			  
 			  if(rs.next()){
-				  post = new Post(rs.getString(1), rs.getString(2),FormatDate.format(rs.getString(3)), rs.getString(4));
+				  post = new Post(rs.getString(1), rs.getString(2), rs.getString(3), FormatDate.format(rs.getString(4)), rs.getString(5), rs.getInt(6));
 			  }
 		  }catch(Exception e){
 				e.printStackTrace();
@@ -136,7 +136,7 @@ public class DatabaseAccess {
 			  con = DatabaseAccess.connectDataBase();
 			  ps = con.prepareStatement("SELECT * FROM comments INNER JOIN "
 			  		+ "posts ON comments.post_id = posts.id "
-			  		+ "WHERE posts.id = '"+id + "'");
+			  		+ "WHERE posts.id = '"+id + "' ORDER BY comments.post_date ASC");
 			  rs =  ps.executeQuery();
 			  while(rs.next()){
 				  comment = new Comment(rs.getString(2), FormatDate.format(rs.getString(3)), rs.getString(4));
@@ -158,10 +158,12 @@ public class DatabaseAccess {
 		  PreparedStatement ps = null;
 		  try{
 		  		con = DatabaseAccess.connectDataBase();
-		  		ps = con.prepareStatement("INSERT INTO posts (content, post_date, username) VALUES(?,?,?)");
-		  		ps.setString(1, post.getContent());
-		  		ps.setString(2, post.getDate());
-		  		ps.setString(3, post.getUsername());
+		  		ps = con.prepareStatement("INSERT INTO posts (title, content, post_date, username, comment_count) VALUES(?,?,?,?,?)");
+		  		ps.setString(1, post.getTitle());
+		  		ps.setString(2, post.getContent());
+		  		ps.setString(3, post.getDate());
+		  		ps.setString(4, post.getUsername());
+		  		ps.setInt(5, post.getCommentCount());
 		  		
 		  		return ps.execute();
 		  		

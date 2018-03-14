@@ -23,9 +23,11 @@ CREATE TABLE USERS
 
 CREATE TABLE POSTS(
 	id varchar(255) PRIMARY KEY,
+	title varchar(255),
 	content varchar(255),
 	post_date datetime,
-	username varchar(255)
+	username varchar(255),
+	comment_count int
 );
 
 CREATE TABLE COMMENTS(
@@ -61,7 +63,7 @@ INSERT INTO `USERS` (`firstname`, `lastname`, `email`, `phone`, `year`, `major`,
 INSERT INTO `USERS` (`firstname`, `lastname`, `email`, `phone`, `year`, `major`, `username`, `password`) VALUES
 ('Roman', 'Garasymovych', 'roman.garasymovych@gmail.com', '647-880-6329', '2017', 'Information Technology', 'roman', 'roman');
 
-INSERT INTO POSTS (content, post_date, username) VALUES ('Welcome to the blog page', '2016-11-22 12:23', 'admin');
+INSERT INTO POSTS (title, content, post_date, username, comment_count) VALUES ('Welcome', 'Welcome to the blog page', '2016-11-22 12:23', 'admin', 2);
 
 INSERT INTO COMMENTS (content, post_date, post_id, username) VALUES 
 ('This is a nice blog.', '2016-11-23 13:04', (SELECT id FROM POSTS WHERE username='admin'), 'roman');
