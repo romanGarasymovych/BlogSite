@@ -70,7 +70,7 @@
 
 				<!-- Initialize the editor. -->
 				<script>
-				CKEDITOR.replace('edit');
+					CKEDITOR.replace('edit');
 				</script>
 			</div>
 		</div>
