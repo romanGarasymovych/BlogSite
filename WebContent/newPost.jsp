@@ -20,15 +20,6 @@
 <link href='./stylesheets/style.css' rel='stylesheet' />
 <link href='./favicon.png' rel='shortcut icon' />
 
-<!--  Simditor links -->
-<link rel="stylesheet" type="text/css" href="./plugins/simditor/node_modules/simditor/styles/simditor.css" />
-
-<script type="text/javascript" src="./plugins/simditor/node_modules/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="./plugins/simditor/node_modules/simple-module/lib/module.js"></script>
-<script type="text/javascript" src="./plugins/simditor/node_modules/simple-hotkeys/lib/hotkeys.js"></script>
-<script type="text/javascript" src="./plugins/simditor/node_modules/simple-uploader/lib/uploader.js"></script>
-<script type="text/javascript" src="./plugins/simditor/node_modules/simditor/lib/simditor.js"></script>
-
 <!-- Bootstrap -->
 <link href='./bootstrap/css/bootstrap.min.css' rel='stylesheet' />
 <script type='text/javascript' src='./bootstrap/js/bootstrap.min.js'></script>
